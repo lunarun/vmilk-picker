@@ -1,0 +1,92 @@
+.v-hairline {
+  &--top-bottom {
+    position: relative;
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 200%;
+      -webkit-transform: scale(.5);
+      transform: scale(.5);
+      -webkit-transform-origin: 0 0;
+      transform-origin: 0 0;
+      pointer-events: none;
+      box-sizing: border-box;
+      border: 0 solid #e5e5e5;
+      border-width: 1px 0;
+    }
+  }
+}
+
+.v-picker {
+  overflow: hidden;
+  user-select: none;
+  background-color: white;
+
+  &__toolbar {
+    height: 40px;
+    line-height: 40px;
+  }
+
+  &__cancel,
+  &__confirm {
+    color: #42AEF6;
+    padding: 0 15px;
+  }
+
+  &__cancel {
+    float: left;
+  }
+
+  &__confirm {
+    float: right;
+  }
+
+  &__title {
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  &__columns {
+    display: flex;
+    position: relative;
+  }
+
+  &__frame {
+    top: 50%;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    position: absolute;
+    pointer-events: none;
+    transform: translateY(-50%);
+  }
+
+  &-column {
+    flex: 1;
+    overflow: hidden;
+    font-size: 18px;
+    text-align: center;
+
+    li {
+      padding: 0 10px;
+      color: #666;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    li&--selected {
+      color: #000;
+    }
+
+    li&--disabled {
+      opacity: .3;
+    }
+  }
+}
+
