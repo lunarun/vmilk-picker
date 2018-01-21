@@ -17,7 +17,7 @@
         :default-index="item.defaultIndex"
         :item-height="itemHeight"
         :visible-item-count="visibleItemCount"
-        @click="onChange(index)"
+        @click="onClick(index)"
       />
       <div class="v-picker__frame v-hairline--top-bottom" :style="frameStyle" />
     </div>
@@ -71,8 +71,12 @@ export default {
   },
 
   watch: {
-    columns () {
-      this.initColumns()
+    columns: {
+      handler (newvalue, old) {
+        console.log(this.columns)
+        this.initColumns()
+      },
+      deep: true 
     }
   },
 
@@ -97,7 +101,7 @@ export default {
         this.$emit(event, this.getValues(), this.getIndexes())
       }
     },
-    onChange (columnIndex) {
+    onClick (columnIndex) {
       if (this.isSimpleColumn) {
         this.$emit('click', this, this.getColumnValue(0), this.getColumnIndex(0))
       } else {
